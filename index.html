@@ -289,6 +289,35 @@
             line-height: 1.6;
         }
 
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .music-box,
+        .count-box {
+            background: #fff8fb;
+            border: 2px solid var(--line);
+            border-radius: 28px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .music-box h3,
+        .count-box h3 {
+            margin: 0 0 10px;
+            color: #cc6a94;
+            font-size: 1.3rem;
+        }
+
+        #loveCounter {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
         @media (max-width: 900px) {
             .hero,
             .grid,
@@ -309,9 +338,11 @@
             .nav { margin-top: 12px; }
             .hero-photos { grid-template-columns: 1fr; }
             .hero-photos figure:first-child { grid-column: span 1; }
+            .extras-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
+    
 <body>
     <div class="star-collage" aria-hidden="true">
         <div class="star-photo star-1"></div>
@@ -324,15 +355,14 @@
     <div class="page">
         <header class="topbar">
             <div class="brand">Una mini muestra de amor</div>
-<nav class="nav" aria-label="Navegacion principal">
-    <a href="index.html">Inicio</a>
-    <a href="desarrollo.html">¿Como paso todo?</a>
-    <a href="fase-2.html">Nuestros primeros meses</a>
-    <a href="fase-3.html">Muchas fotitos</a>
-    <a href="fase-4.html">50 cosas que amo de ti</a>
-    <a href="fase-5.html">Nuestro futuro juntos</a>
-</nav>
-
+            <nav class="nav" aria-label="Navegacion principal">
+                <a href="index.html">Inicio</a>
+                <a href="desarrollo.html">¿Como paso todo?</a>
+                <a href="fase-2.html">Nuestros primeros meses</a>
+                <a href="fase-3.html">Muchas fotitos</a>
+                <a href="fase-4.html">50 cosas que amo de ti</a>
+                <a href="fase-5.html">Nuestro futuro juntos</a>
+            </nav>
         </header>
 
         <main>
@@ -343,12 +373,11 @@
                     <p>Hola mi vida, la verdad es que no se como empezar, ya que no se que decirte, mi mente se nubla de cosas lindas, tantas como para decirlas. Hace aproximadamente 1 año y 2/3 meses (aun no estabamos juntos) yo te escribi esto: "Al comienzo del semestre, con un miedo insoportable a las personas nuevas en mi vida, conocí a alguien que lo cambiaría todo. Alguien en quien confié y a quien entregué cada parte de mi ser.
 Me enamoré de una persona con la que quizás nunca pueda estar, ya sea por la distancia, el rechazo o las innumerables barreras que mis padres imponen para algo tan simple como un amor adolescente.
 Él. Solo él. Mi primer amor verdadero. El niño de los ojos bonitos, con forma de luna. De la sonrisa encantadora y la voz capaz de hacerme reír con cualquier cosa que diga. Tan sofisticado e inocente a la vez, que cada palabra suya desborda ternura.
-Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en romperlo. Aunque, en realidad, no fue su culpa, sino la distancia que se interpuso entre nosotros.", no recuerdo muy bien porque lo escribi, pero nunca te lo mostre, pues me senti acobardada de mis sentimientos en ese momento, no sabia que hacer, ni quien era. Pero espero y le tomes forma a aquel texto.  </p>
+Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en romperlo. Aunque, en realidad, no fue su culpa, sino la distancia que se interpuso entre nosotros.", no recuerdo muy bien porque lo escribi, pero nunca te lo mostre, pues me senti acobardada de mis sentimientos en ese momento, no sabia que hacer, ni quien era. Pero espero y le tomes forma a aquel texto.</p>
                     <p></p>
                     <div class="actions">
                       <a class="button primary" href="desarrollo.html">¿Como paso todo?</a>
                       <a class="button" href="fase-4.html">50 cosas que amo de ti</a>
-
                     </div>
                 </div>
 
@@ -367,41 +396,40 @@ Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en rom
             </section>
 
             <section class="section">
-<h2>Pasito a pasito</h2>
-<p>Te amo corazón de melón.</p>
-<div class="grid">
-    <a class="page-card" href="index.html">
-        <span class="page-number">Pagina 1</span>
-        <h3>Inicio</h3>
-        <p>Un conmienzo, un todo de lo poco que llevamos, un sin fin de todo lo hermoso</p>
-    </a>
-    <a class="page-card" href="desarrollo.html">
-        <span class="page-number">Pagina 2</span>
-        <h3>¿Como paso todo?</h3>
-        <p>El gran proceso de un comienzo, cuya base, es el amor puro y sin mascaras en un mundo lleno de mezcla ajena y falta de moralidad.</p>
-    </a>
-    <a class="page-card" href="fase-2.html">
-        <span class="page-number">Pagina 3</span>
-        <h3>Nuestros primeros meses</h3>
-        <p>Grandes momentos que me marcaron, espero que igual a ti. Espero que cada momento que vivimos te haga sentir como en una fantasia en la que despertar no es una opción.</p>
-    </a>
-    <a class="page-card" href="fase-3.html">
-        <span class="page-number">Pagina 4</span>
-        <h3>Muchas fotitos</h3>
-        <p>De las pocas fotos que tenemos juntos, de los momentos más bellos y extrañamente inolvidables que siempre guardaremos en nuestro corazón.</p>
-    </a>
-    <a class="page-card" href="fase-4.html">
-        <span class="page-number">Pagina 5</span>
-        <h3>50 cosas que amo de ti</h3>
-        <p>Todo lo que amo de ti, bueno no todo, ya que son miles, pero en este caso solo son 50. Que lamentable</p>
-    </a>
-    <a class="page-card" href="fase-5.html">
-        <span class="page-number">Pagina 6</span>
-        <h3>Nuestro futuro juntos</h3>
-        <p>Lo que quiero construir contigo, y hasta que la muerte nos separe.  </p>
-    </a>
-</div>
-
+                <h2>Pasito a pasito</h2>
+                <p>Te amo corazón de melón.</p>
+                <div class="grid">
+                    <a class="page-card" href="index.html">
+                        <span class="page-number">Pagina 1</span>
+                        <h3>Inicio</h3>
+                        <p>Un conmienzo, un todo de lo poco que llevamos, un sin fin de todo lo hermoso</p>
+                    </a>
+                    <a class="page-card" href="desarrollo.html">
+                        <span class="page-number">Pagina 2</span>
+                        <h3>¿Como paso todo?</h3>
+                        <p>El gran proceso de un comienzo, cuya base, es el amor puro y sin mascaras en un mundo lleno de mezcla ajena y falta de moralidad.</p>
+                    </a>
+                    <a class="page-card" href="fase-2.html">
+                        <span class="page-number">Pagina 3</span>
+                        <h3>Nuestros primeros meses</h3>
+                        <p>Grandes momentos que me marcaron, espero que igual a ti. Espero que cada momento que vivimos te haga sentir como en una fantasia en la que despertar no es una opción.</p>
+                    </a>
+                    <a class="page-card" href="fase-3.html">
+                        <span class="page-number">Pagina 4</span>
+                        <h3>Muchas fotitos</h3>
+                        <p>De las pocas fotos que tenemos juntos, de los momentos más bellos y extrañamente inolvidables que siempre guardaremos en nuestro corazón.</p>
+                    </a>
+                    <a class="page-card" href="fase-4.html">
+                        <span class="page-number">Pagina 5</span>
+                        <h3>50 cosas que amo de ti</h3>
+                        <p>Todo lo que amo de ti, bueno no todo, ya que son miles, pero en este caso solo son 50. Que lamentable</p>
+                    </a>
+                    <a class="page-card" href="fase-5.html">
+                        <span class="page-number">Pagina 6</span>
+                        <h3>Nuestro futuro juntos</h3>
+                        <p>Lo que quiero construir contigo, y hasta que la muerte nos separe.</p>
+                    </a>
+                </div>
             </section>
 
             <section class="section">
@@ -418,54 +446,67 @@ Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en rom
                     </figure>
                 </div>
             </section>
+
+            <section class="section extras-romanticos">
+                <h2>Nuestro rinconcito</h2>
+                <p>Un pedacito interactivo de nosotros.</p>
+
+                <div class="extras-grid">
+                    <div class="music-box">
+                        <h3>Nuestra cancion</h3>
+                        <p>La puedes escuchar aqui mismito.</p>
+                        <iframe
+                            width="100%"
+                            height="220"
+                            src="https://www.youtube.com/embed/TU_ID"
+                            title="Nuestra cancion"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="count-box">
+                        <h3>Llevamos juntos...</h3>
+                        <p id="loveCounter">Cargando contador...</p>
+                    </div>
                 </div>
-    <div class="music-box">
-    <h3>Summer Time High Time</h3>
-    <p>Te la dedico o-o</p>
-    <iframe
-        width="100%"
-        height="220"
-        src="https://youtu.be/bQ9F5OzZtzw?si=hxGm5H8czu_2vIKN"
-        title="..."
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-    <script>
-    const loveCounter = document.getElementById("loveCounter");
-
-    function updateLoveCounter() {
-        const startDate = new Date("2025-05-13T00:00:00");
-        const now = new Date();
-
-        let diffMs = now - startDate;
-
-        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        diffMs %= (1000 * 60 * 60 * 24);
-
-        const hours = Math.floor(diffMs / (1000 * 60 * 60));
-        diffMs %= (1000 * 60 * 60);
-
-        const minutes = Math.floor(diffMs / (1000 * 60));
-        diffMs %= (1000 * 60);
-
-        const seconds = Math.floor(diffMs / 1000);
-
-        if (loveCounter) {
-            loveCounter.textContent =
-                days + " dias, " +
-                hours + " horas, " +
-                minutes + " minutos y " +
-                seconds + " segundos";
-        }
-    }
-
-    updateLoveCounter();
-    setInterval(updateLoveCounter, 1000);
-</script>
-
-
+            </section>
         </main>
+    </div>
+
+    <script>
+        const loveCounter = document.getElementById("loveCounter");
+
+        function updateLoveCounter() {
+            const startDate = new Date("2025-05-13T00:00:00");
+            const now = new Date();
+
+            let diffMs = now - startDate;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const seconds = Math.floor(diffMs / 1000);
+
+            if (loveCounter) {
+                loveCounter.textContent =
+                    days + " dias, " +
+                    hours + " horas, " +
+                    minutes + " minutos y " +
+                    seconds + " segundos";
+            }
+        }
+
+        updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+    </script>
 </body>
 </html>
+
