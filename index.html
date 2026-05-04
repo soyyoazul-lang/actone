@@ -420,5 +420,52 @@ Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en rom
             </section>
         </main>
     </div>
+    <div class="music-box">
+    <h3>Summer Time High Time</h3>
+    <p>Te la dedico o-o</p>
+    <iframe
+        width="100%"
+        height="220"
+        src="https://youtu.be/bQ9F5OzZtzw?si=hxGm5H8czu_2vIKN"
+        title="..."
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+    <script>
+    const loveCounter = document.getElementById("loveCounter");
+
+    function updateLoveCounter() {
+        const startDate = new Date("2025-05-13T00:00:00");
+        const now = new Date();
+
+        let diffMs = now - startDate;
+
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        diffMs %= (1000 * 60 * 60 * 24);
+
+        const hours = Math.floor(diffMs / (1000 * 60 * 60));
+        diffMs %= (1000 * 60 * 60);
+
+        const minutes = Math.floor(diffMs / (1000 * 60));
+        diffMs %= (1000 * 60);
+
+        const seconds = Math.floor(diffMs / 1000);
+
+        if (loveCounter) {
+            loveCounter.textContent =
+                days + " dias, " +
+                hours + " horas, " +
+                minutes + " minutos y " +
+                seconds + " segundos";
+        }
+    }
+
+    updateLoveCounter();
+    setInterval(updateLoveCounter, 1000);
+</script>
+
+
 </body>
 </html>
