@@ -445,67 +445,82 @@ Hugo. La primera persona a la que amé con todo mi corazón. Y el primero en rom
                         <img src="star-09.jpeg" alt="Otra foto bonita de ustedes dos">
                     </figure>
                 </div>
-            </section>
+ </section>
 
-            <section class="section extras-romanticos">
-                <h2>Nuestro rinconcito</h2>
-                <p>Un pedacito interactivo de nosotros.</p>
+<section class="section extras-romanticos">
+    <h2>Nuestro rinconcito</h2>
+    <p>Un pedacito interactivo de nosotros.</p>
 
-                <div class="extras-grid">
-                    <div class="music-box">
-                        <h3>Nuestra cancion</h3>
-                        <p>La puedes escuchar aqui mismito.</p>
-                        <iframe
-                            width="100%"
-                            height="220"
-                            src="https://www.youtube.com/embed/TU_ID"
-                            title="Nuestra cancion"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+    <div class="extras-grid">
+        <div class="music-box">
+            <h3>Summer Time High Time</h3>
+            <p>Picale para escucharla o pausarla.</p>
+            <audio id="ourSong" src="Summer Time High Time(1).mp3"></audio>
+            <button class="button primary" id="musicToggle">Reproducir musica</button>
+        </div>
 
-                    <div class="count-box">
-                        <h3>Llevamos juntos...</h3>
-                        <p id="loveCounter">Cargando contador...</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <div class="count-box">
+            <h3>Llevamos juntos...</h3>
+            <p id="loveCounter">Cargando contador...</p>
+        </div>
     </div>
+</section>
+</main>
+</div>
 
-    <script>
-        const loveCounter = document.getElementById("loveCounter");
+<script>
+    const musicButton = document.getElementById("musicToggle");
+    const song = document.getElementById("ourSong");
 
-        function updateLoveCounter() {
-            const startDate = new Date("2025-05-13T00:00:00");
-            const now = new Date();
-
-            let diffMs = now - startDate;
-
-            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            diffMs %= (1000 * 60 * 60 * 24);
-
-            const hours = Math.floor(diffMs / (1000 * 60 * 60));
-            diffMs %= (1000 * 60 * 60);
-
-            const minutes = Math.floor(diffMs / (1000 * 60));
-            diffMs %= (1000 * 60);
-
-            const seconds = Math.floor(diffMs / 1000);
-
-            if (loveCounter) {
-                loveCounter.textContent =
-                    days + " dias, " +
-                    hours + " horas, " +
-                    minutes + " minutos y " +
-                    seconds + " segundos";
+    if (musicButton && song) {
+        musicButton.addEventListener("click", async () => {
+            if (song.paused) {
+                try {
+                    await song.play();
+                    musicButton.textContent = "Pausar musica";
+                } catch (error) {
+                    musicButton.textContent = "No se pudo reproducir";
+                }
+            } else {
+                song.pause();
+                musicButton.textContent = "Reproducir musica";
             }
-        }
+        });
+    }
 
-        updateLoveCounter();
-        setInterval(updateLoveCounter, 1000);
+    function updateLoveCounter() {
+        const loveCounter = document.getElementById("loveCounter");
+        if (!loveCounter) return;
+
+        const startDate = new Date("2025-05-13T00:00:00");
+        const now = new Date();
+
+        let diffMs = now - startDate;
+
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        diffMs %= (1000 * 60 * 60 * 24);
+
+        const hours = Math.floor(diffMs / (1000 * 60 * 60));
+        diffMs %= (1000 * 60 * 60);
+
+        const minutes = Math.floor(diffMs / (1000 * 60));
+        diffMs %= (1000 * 60);
+
+        const seconds = Math.floor(diffMs / 1000);
+
+        loveCounter.textContent =
+            days + " dias, " +
+            hours + " horas, " +
+            minutes + " minutos y " +
+            seconds + " segundos";
+    }
+
+    updateLoveCounter();
+    setInterval(updateLoveCounter, 1000);
+</script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
