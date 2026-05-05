@@ -146,6 +146,84 @@
                 <a class="button" href="fase-3.html">Volver a Muchas fotitos</a>
                 <a class="button primary" href="fase-5.html">Ir a Nuestro futuro juntos</a>
             </div>
+             <section class="note">
+                <h2>Esta hermosaaaa</h2>
+                <p>Literal es todo lo que quiero, que seas mi unico amor.</p>
+
+                <div class="extras-grid">
+                    <div class="music-box">
+                        <h3>Only</h3>
+                        <p>Picale para escucharla o pausarla.</p>
+                        <audio id="ourSong" src="only.mp3"></audio>
+                        <button class="button primary" id="musicToggle">Reproducir musica</button>
+                    </div>
+
+                    <div class="count-box">
+                        <h3>Llevamos juntos...</h3>
+                        <p id="loveCounter">Cargando contador...</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="actions">
+                <a class="button" href="index.html">Volver a Inicio</a>
+                <a class="button primary" href="fase-2.html">Ir a Nuestros primeros meses</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const musicButton = document.getElementById("musicToggle");
+        const song = document.getElementById("ourSong");
+
+        if (musicButton && song) {
+            musicButton.addEventListener("click", async () => {
+                if (song.paused) {
+                    try {
+                        await song.play();
+                        musicButton.textContent = "Pausar musica";
+                    } catch (error) {
+                        musicButton.textContent = "No se pudo reproducir";
+                    }
+                } else {
+                    song.pause();
+                    musicButton.textContent = "Reproducir musica";
+                }
+            });
+        }
+
+        function updateLoveCounter() {
+            const loveCounter = document.getElementById("loveCounter");
+            if (!loveCounter) return;
+
+            const startDate = new Date("2025-05-13T00:00:00");
+            const now = new Date();
+
+            let diffMs = now - startDate;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const seconds = Math.floor(diffMs / 1000);
+
+            loveCounter.textContent =
+                days + " dias, " +
+                hours + " horas, " +
+                minutes + " minutos y " +
+                seconds + " segundos";
+        }
+
+        updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+    </script>
+</body>
+</html>
         </main>
     </div>
 </body>
