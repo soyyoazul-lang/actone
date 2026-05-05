@@ -36,6 +36,59 @@
         .button.primary { background:linear-gradient(180deg,#f5a6c6 0%,#e77fa5 100%); color:white; border-color:transparent; }
         @media (max-width:860px) { .dream-grid { grid-template-columns:1fr; } }
         @media (max-width:640px) { .topbar { display:block; border-radius:28px; } .nav { margin-top:12px; } }
+        }
+
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .music-box,
+        .count-box {
+            background: #fff8fb;
+            border: 2px solid var(--line);
+            border-radius: 28px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .music-box h3,
+        .count-box h3 {
+            margin: 0 0 10px;
+            color: #cc6a94;
+            font-size: 1.3rem;
+        }
+
+        #loveCounter {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .grid,
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photos {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .star-1, .star-3, .star-5 { width: 180px; height: 180px; }
+            .star-2, .star-4, .star-6 { width: 220px; height: 220px; }
+        }
+
+        @media (max-width: 640px) {
+            .topbar { display: block; border-radius: 28px; }
+            .nav { margin-top: 12px; }
+            .hero-photos { grid-template-columns: 1fr; }
+            .hero-photos figure:first-child { grid-column: span 1; }
+            .extras-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
