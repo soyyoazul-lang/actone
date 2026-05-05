@@ -38,8 +38,42 @@
         .shot span { position:absolute; left:10px; right:10px; bottom:10px; background:rgba(255,248,251,.92); border-radius:18px; padding:10px 12px; font-weight:800; font-size:.9rem; }
         .actions { display:flex; flex-wrap:wrap; gap:10px; }
         .button.primary { background:linear-gradient(180deg,#f5a6c6 0%,#e77fa5 100%); color:white; border-color:transparent; }
+
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .music-box,
+        .count-box {
+            background: #fff8fb;
+            border: 2px solid var(--line);
+            border-radius: 28px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .music-box h3,
+        .count-box h3 {
+            margin: 0 0 10px;
+            color: #cc6a94;
+            font-size: 1.3rem;
+        }
+
+        #loveCounter {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
         @media (max-width:860px) { .hero,.gallery { grid-template-columns:1fr; } }
-        @media (max-width:640px) { .topbar { display:block; border-radius:28px; } .nav { margin-top:12px; } }
+        @media (max-width:640px) {
+            .topbar { display:block; border-radius:28px; }
+            .nav { margin-top:12px; }
+            .extras-grid { grid-template-columns:1fr; }
+        }
     </style>
 </head>
 <body>
@@ -47,15 +81,14 @@
     <div class="page">
         <header class="topbar">
             <strong>El "¿Como?"</strong>
-    <nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="desarrollo.html">¿Como paso todo?</a>
-    <a href="fase-2.html">Nuestros primeros meses</a>
-    <a href="fase-3.html">Muchas fotitos</a>
-    <a href="fase-4.html">50 cosas que amo de ti</a>
-    <a href="fase-5.html">Nuestro futuro juntos</a>
-</nav>
-
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="desarrollo.html">¿Como paso todo?</a>
+                <a href="fase-2.html">Nuestros primeros meses</a>
+                <a href="fase-3.html">Muchas fotitos</a>
+                <a href="fase-4.html">50 cosas que amo de ti</a>
+                <a href="fase-5.html">Nuestro futuro juntos</a>
+            </nav>
         </header>
 
         <main>
@@ -100,11 +133,82 @@
                 </figure>
             </section>
 
+            <section class="note">
+                <h2>Otra canción</h2>
+                <p>Ya te la habia dedicado, pero siempre que te dedicaba algo nunca lo escuchabas, por eso, ahora es obligatorio</p>
+
+                <div class="extras-grid">
+                    <div class="music-box">
+                        <h3>Congratulations</h3>
+                        <p>Picale para escucharla o pausarla.</p>
+                        <audio id="ourSong" src="uno.mp3"></audio>
+                        <button class="button primary" id="musicToggle">Reproducir musica</button>
+                    </div>
+
+                    <div class="count-box">
+                        <h3>Llevamos juntos...</h3>
+                        <p id="loveCounter">Cargando contador...</p>
+                    </div>
+                </div>
+            </section>
+
             <div class="actions">
                 <a class="button" href="index.html">Volver a Inicio</a>
-                <a class="button primary" href="fase-2.html">Ir a Nuestros primeros meses/a>
+                <a class="button primary" href="fase-2.html">Ir a Nuestros primeros meses</a>
             </div>
         </main>
     </div>
+
+    <script>
+        const musicButton = document.getElementById("musicToggle");
+        const song = document.getElementById("ourSong");
+
+        if (musicButton && song) {
+            musicButton.addEventListener("click", async () => {
+                if (song.paused) {
+                    try {
+                        await song.play();
+                        musicButton.textContent = "Pausar musica";
+                    } catch (error) {
+                        musicButton.textContent = "No se pudo reproducir";
+                    }
+                } else {
+                    song.pause();
+                    musicButton.textContent = "Reproducir musica";
+                }
+            });
+        }
+
+        function updateLoveCounter() {
+            const loveCounter = document.getElementById("loveCounter");
+            if (!loveCounter) return;
+
+            const startDate = new Date("2025-05-13T00:00:00");
+            const now = new Date();
+
+            let diffMs = now - startDate;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const seconds = Math.floor(diffMs / 1000);
+
+            loveCounter.textContent =
+                days + " dias, " +
+                hours + " horas, " +
+                minutes + " minutos y " +
+                seconds + " segundos";
+        }
+
+        updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+    </script>
 </body>
 </html>
+
