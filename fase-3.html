@@ -18,14 +18,15 @@
         .star-3 { width:230px; height:230px; top:76%; right:8%; transform:rotate(-9deg); background-image:url("foto-real-4.jpeg"); }
         body::before { content:"🌷💗🌷"; position:fixed; right:18px; top:18px; opacity:.12; font-size:2.4rem; pointer-events:none; }
         .page { width:min(1140px,calc(100% - 28px)); margin:0 auto; padding:24px 0 52px; position:relative; z-index:1; }
-        .topbar,.hero,.memory-card,.closing { background:var(--card); border:2px solid var(--line); box-shadow:var(--shadow); }
+        .topbar,.hero,.memory-card,.closing,.music-box,.count-box { background:var(--card); border:2px solid var(--line); box-shadow:var(--shadow); }
         .topbar { border-radius:999px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:22px; }
         .nav { display:flex; flex-wrap:wrap; gap:10px; }
         .nav a,.button { text-decoration:none; color:var(--text); background:#fff8fb; border:2px solid var(--line); padding:10px 14px; border-radius:999px; font-weight:800; }
         .hero { border-radius:34px; padding:24px; margin-bottom:22px; }
-        h1,h2 { margin:0; font-family:"Cherry Bomb One",system-ui; font-weight:400; color:#d05f8f; }
+        h1,h2,h3 { margin:0; font-family:"Cherry Bomb One",system-ui; font-weight:400; color:#d05f8f; }
         h1 { font-size:clamp(2.6rem,6vw,4.6rem); line-height:1.02; margin:16px 0; }
         h2 { font-size:1.55rem; line-height:1.05; }
+        h3 { font-size:1.3rem; }
         p { color:var(--muted); line-height:1.8; }
         .badge { display:inline-block; padding:8px 14px; border-radius:999px; background:rgba(246,169,193,.18); font-weight:800; font-size:.84rem; }
         .memory-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-bottom:22px; }
@@ -36,8 +37,37 @@
         .closing { border-radius:30px; padding:22px; margin-bottom:22px; text-align:center; }
         .actions { display:flex; flex-wrap:wrap; gap:10px; }
         .button.primary { background:linear-gradient(180deg,#f5a6c6 0%,#e77fa5 100%); color:white; border-color:transparent; }
-        @media (max-width:860px) { .memory-grid { grid-template-columns:1fr; } .memory-card img { height:300px; } }
-        @media (max-width:640px) { .topbar { display:block; border-radius:28px; } .nav { margin-top:12px; } .memory-card img { height:260px; } }
+
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .music-box,
+        .count-box {
+            border-radius: 28px;
+            padding: 22px;
+        }
+
+        #loveCounter {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        @media (max-width:860px) {
+            .memory-grid,
+            .extras-grid { grid-template-columns:1fr; }
+            .memory-card img { height:300px; }
+        }
+
+        @media (max-width:640px) {
+            .topbar { display:block; border-radius:28px; }
+            .nav { margin-top:12px; }
+            .memory-card img { height:260px; }
+        }
     </style>
 </head>
 <body>
@@ -45,16 +75,14 @@
     <div class="page">
         <header class="topbar">
             <strong>Fotitos</strong>
-<nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="desarrollo.html">¿Como paso todo?</a>
-    <a href="fase-2.html">Nuestros primeros meses</a>
-    <a href="fase-3.html">Muchas fotitos</a>
-    <a href="fase-4.html">50 cosas que amo de ti</a>
-    <a href="fase-5.html">Nuestro futuro juntos</a>
-</nav>
-
-
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="desarrollo.html">¿Como paso todo?</a>
+                <a href="fase-2.html">Nuestros primeros meses</a>
+                <a href="fase-3.html">Muchas fotitos</a>
+                <a href="fase-4.html">50 cosas que amo de ti</a>
+                <a href="fase-5.html">Nuestro futuro juntos</a>
+            </nav>
         </header>
 
         <main>
@@ -62,8 +90,7 @@
                 <span class="badge">Top mejores fotos que hemos tomado</span>
                 <h1>Recuerdos lindos y simples</h1>
                 <p>Casi todas estas fotos son tomadas por MI, porque tu tomas fotos bien horribles donde me veo super feaaaa!!
-                Pero bueno, eso no importa, salimos los dos, a lo mejor la mitad de mi, o viceversa, lo que importa es que salimos.
-                </p>
+                Pero bueno, eso no importa, salimos los dos, a lo mejor la mitad de mi, o viceversa, lo que importa es que salimos.</p>
             </section>
 
             <section class="memory-grid">
@@ -99,7 +126,7 @@
                     <div class="memory-copy">
                         <span class="edit">24/10/2025</span>
                         <h2>Mira pues, tu carota</h2>
-                        <p>Te acuerdas que el poli Felipe llego de la nada y nos hablo de nuestros disfraces? Ay el poli felipe, se le extraña.  </p>
+                        <p>Te acuerdas que el poli Felipe llego de la nada y nos hablo de nuestros disfraces? Ay el poli felipe, se le extraña.</p>
                     </div>
                 </article>
 
@@ -116,7 +143,7 @@
                     <img src="star-07.jpeg" alt="Foto tierna y divertida de ustedes">
                     <div class="memory-copy">
                         <span class="edit">14/10/2025</span>
-                        <h2>Estabamos en inglés, con el profe que no nos decia nada si nos queriamos de más. </h2>
+                        <h2>Estabamos en inglés, con el profe que no nos decia nada si nos queriamos de más.</h2>
                         <p>Recuerdas todas las marranadas que haciamos en inglés? Ay no, ahora no te importa la clase, no más metes mano y yap. Que ricooooo.</p>
                     </div>
                 </article>
@@ -128,11 +155,76 @@
                 Espero que una de nuestras proximas fotos juntos sea de cuando nos graduemos y nos casemos!💘</p>
             </section>
 
+            <section class="extras-grid">
+                <div class="music-box">
+                    <h3>Summer Time High Time</h3>
+                    <p>Picale para escucharla o pausarla.</p>
+                    <audio id="ourSong" src="cuco.mp3"></audio>
+                    <button class="button primary" id="musicToggle">Reproducir musica</button>
+                </div>
+
+                <div class="count-box">
+                    <h3>Llevamos juntos...</h3>
+                    <p id="loveCounter">Cargando contador...</p>
+                </div>
+            </section>
+
             <div class="actions">
                 <a class="button" href="fase-2.html">Volver a Nuestros primeros meses</a>
                 <a class="button primary" href="fase-4.html">Ir a 50 cosas que amo de ti</a>
             </div>
         </main>
     </div>
+
+    <script>
+        const musicButton = document.getElementById("musicToggle");
+        const song = document.getElementById("ourSong");
+
+        if (musicButton && song) {
+            musicButton.addEventListener("click", async () => {
+                if (song.paused) {
+                    try {
+                        await song.play();
+                        musicButton.textContent = "Pausar musica";
+                    } catch (error) {
+                        musicButton.textContent = "No se pudo reproducir";
+                    }
+                } else {
+                    song.pause();
+                    musicButton.textContent = "Reproducir musica";
+                }
+            });
+        }
+
+        function updateLoveCounter() {
+            const loveCounter = document.getElementById("loveCounter");
+            if (!loveCounter) return;
+
+            const startDate = new Date("2025-05-13T00:00:00");
+            const now = new Date();
+
+            let diffMs = now - startDate;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const seconds = Math.floor(diffMs / 1000);
+
+            loveCounter.textContent =
+                days + " dias, " +
+                hours + " horas, " +
+                minutes + " minutos y " +
+                seconds + " segundos";
+        }
+
+        updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+    </script>
 </body>
 </html>
