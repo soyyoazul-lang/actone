@@ -18,14 +18,15 @@
         .star-3 { width:230px; height:230px; top:72%; left:4%; transform:rotate(9deg); background-image:url("foto-real-1.jpeg"); }
         body::before { content:"💗 🌷 💗"; position:fixed; left:18px; top:18px; opacity:.12; font-size:2.4rem; pointer-events:none; }
         .page { width:min(1100px,calc(100% - 28px)); margin:0 auto; padding:24px 0 52px; position:relative; z-index:1; }
-        .topbar,.hero,.milestone,.quote,.photos { background:var(--card); border:2px solid var(--line); box-shadow:var(--shadow); }
+        .topbar,.hero,.milestone,.quote,.photos,.count-box,.music-box { background:var(--card); border:2px solid var(--line); box-shadow:var(--shadow); }
         .topbar { border-radius:999px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:22px; }
         .nav { display:flex; flex-wrap:wrap; gap:10px; }
         .nav a,.button { text-decoration:none; color:var(--text); background:#fff8fb; border:2px solid var(--line); padding:10px 14px; border-radius:999px; font-weight:800; }
         .hero { border-radius:34px; padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px; }
-        h1,h2 { margin:0; font-family:"Cherry Bomb One",system-ui; font-weight:400; color:#d05f8f; }
+        h1,h2,h3 { margin:0; font-family:"Cherry Bomb One",system-ui; font-weight:400; color:#d05f8f; }
         h1 { font-size:clamp(2.6rem,6vw,4.6rem); line-height:1.02; margin:16px 0; }
         h2 { font-size:1.8rem; }
+        h3 { font-size:1.3rem; }
         p { color:var(--muted); line-height:1.8; }
         .badge { display:inline-block; padding:8px 14px; border-radius:999px; background:rgba(246,169,193,.18); font-weight:800; font-size:.84rem; }
         figure { margin:0; border-radius:26px; overflow:hidden; }
@@ -38,7 +39,27 @@
         .photos { border-radius:30px; padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
         .actions { display:flex; flex-wrap:wrap; gap:10px; }
         .button.primary { background:linear-gradient(180deg,#f5a6c6 0%,#e77fa5 100%); color:white; border-color:transparent; }
-        @media (max-width:860px) { .hero,.grid,.photos { grid-template-columns:1fr; } }
+
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .music-box,
+        .count-box {
+            border-radius: 28px;
+            padding: 22px;
+        }
+
+        #loveCounter {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        @media (max-width:860px) { .hero,.grid,.photos,.extras-grid { grid-template-columns:1fr; } }
         @media (max-width:640px) { .topbar { display:block; border-radius:28px; } .nav { margin-top:12px; } }
     </style>
 </head>
@@ -47,15 +68,14 @@
     <div class="page">
         <header class="topbar">
             <strong>Fase 2 💗</strong>
-           <nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="desarrollo.html">¿Como paso todo?</a>
-    <a href="fase-2.html">Nuestros primeros meses</a>
-    <a href="fase-3.html">Muchas fotitos</a>
-    <a href="fase-4.html">50 cosas que amo de ti</a>
-    <a href="fase-5.html">Nuestro futuro juntos</a>
-</nav>
-
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="desarrollo.html">¿Como paso todo?</a>
+                <a href="fase-2.html">Nuestros primeros meses</a>
+                <a href="fase-3.html">Muchas fotitos</a>
+                <a href="fase-4.html">50 cosas que amo de ti</a>
+                <a href="fase-5.html">Nuestro futuro juntos</a>
+            </nav>
         </header>
 
         <main>
@@ -63,7 +83,7 @@
                 <div>
                     <span class="badge">Despues de 5 largos meses conociendonos</span>
                     <h1>Tu y yo, por fin juntos.</h1>
-                    <p> Aun recuerdo que yo me senti muy feliz cuando me pediste que fueramos pareja, fue un logro, a ver conquistado a alguien tan guapo como tu era un logro impresionante para mi. Amén</p>
+                    <p>Aun recuerdo que yo me senti muy feliz cuando me pediste que fueramos pareja, fue un logro, a ver conquistado a alguien tan guapo como tu era un logro impresionante para mi. Amén</p>
                 </div>
                 <figure>
                     <img src="star-11.jpeg" alt="Foto cercana de ustedes dos">
@@ -101,11 +121,76 @@
                 </figure>
             </section>
 
+            <section class="extras-grid">
+                <div class="music-box">
+                    <h3>Sparks</h3>
+                    <p>Picale para escucharla o pausarla.</p>
+                    <audio id="ourSong" src="dos.mp3"></audio>
+                    <button class="button primary" id="musicToggle">Reproducir musica</button>
+                </div>
+
+                <div class="count-box">
+                    <h3>Llevamos juntos...</h3>
+                    <p id="loveCounter">Cargando contador...</p>
+                </div>
+            </section>
+
             <div class="actions">
                 <a class="button" href="desarrollo.html">Volver a ¿Como paso todo?</a>
                 <a class="button primary" href="fase-3.html">Ir a Muchas fotitos</a>
             </div>
         </main>
     </div>
+
+    <script>
+        const musicButton = document.getElementById("musicToggle");
+        const song = document.getElementById("ourSong");
+
+        if (musicButton && song) {
+            musicButton.addEventListener("click", async () => {
+                if (song.paused) {
+                    try {
+                        await song.play();
+                        musicButton.textContent = "Pausar musica";
+                    } catch (error) {
+                        musicButton.textContent = "No se pudo reproducir";
+                    }
+                } else {
+                    song.pause();
+                    musicButton.textContent = "Reproducir musica";
+                }
+            });
+        }
+
+        function updateLoveCounter() {
+            const loveCounter = document.getElementById("loveCounter");
+            if (!loveCounter) return;
+
+            const startDate = new Date("2025-05-13T00:00:00");
+            const now = new Date();
+
+            let diffMs = now - startDate;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const seconds = Math.floor(diffMs / 1000);
+
+            loveCounter.textContent =
+                days + " dias, " +
+                hours + " horas, " +
+                minutes + " minutos y " +
+                seconds + " segundos";
+        }
+
+        updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+    </script>
 </body>
 </html>
